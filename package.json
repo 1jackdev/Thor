@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "surge": "REACT_APP_BASE_URL=https://jackdev-jobly.herokuapp.com npm run build && cp build/index.html build/200.html && surge build jackdev-jobly.surge.sh && echo http://jackdev-jobly.surge.sh"
   },
   "eslintConfig": {
     "extends": [
