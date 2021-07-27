@@ -22,28 +22,32 @@ function convertTime(arr) {
 }
 
 function handlePlaceData(obj) {
-  let nextClosingTime;
-  let daysOfOperation = obj.hours[0].open;
-  let today = new Date();
-  const currentTime = () => {
-    let minutes = today.getMinutes().toString();
-    let hours = today.getHours().toString();
-    return parseInt(hours + minutes);
-  };
-  let dayOfWeek = today.getDay();
-  let todaysHours = daysOfOperation.filter((d) => d.day === dayOfWeek);
-  todaysHours.map((slot) => {
-    slot.end = parseInt(slot.end);
-    return slot;
-  });
-  // if location has split hours (i.e. closed from 2 to 4pm)
-  if (todaysHours.length > 1) {
-    nextClosingTime =
-      currentTime() > todaysHours[0].end
-        ? todaysHours[0].end
-        : todaysHours[1].end;
-  } else nextClosingTime = todaysHours[0].end;
-  return formatTime(nextClosingTime);
+  try {
+    let nextClosingTime;
+    let daysOfOperation = obj.hours[0].open;
+    let today = new Date();
+    const currentTime = () => {
+      let minutes = today.getMinutes().toString();
+      let hours = today.getHours().toString();
+      return parseInt(hours + minutes);
+    };
+    let dayOfWeek = today.getDay();
+    let todaysHours = daysOfOperation.filter((d) => d.day === dayOfWeek);
+    todaysHours.map((slot) => {
+      slot.end = parseInt(slot.end);
+      return slot;
+    });
+    // if location has split hours (i.e. closed from 2 to 4pm)
+    if (todaysHours.length > 1) {
+      nextClosingTime =
+        currentTime() > todaysHours[0].end
+          ? todaysHours[0].end
+          : todaysHours[1].end;
+    } else nextClosingTime = todaysHours[0].end;
+    return formatTime(nextClosingTime);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 module.exports = { handlePlaceData };

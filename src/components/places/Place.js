@@ -25,6 +25,18 @@ export default function Place() {
     let address = placeData.location.display_address;
     directionsLink = `https://maps.google.com/maps/dir/${searchData.location}/${address}`;
   }
+
+  const closingTimeBox = () => {
+    if (!closingTime) {
+      return <div></div>;
+    } else {
+      return (
+        <h2>
+          Closes at <span style={{ color: "green" }}>{closingTime}</span>
+        </h2>
+      );
+    }
+  };
   // convert hours
 
   if (isLoading) {
@@ -42,9 +54,7 @@ export default function Place() {
         </div>
         {""}
         <div>
-          <h2>
-            Closes at <span style={{ color: "green" }}>{closingTime}</span>
-          </h2>
+          {closingTimeBox()}
           <button className="btn">
             {" "}
             <a target="_blank" href={directionsLink} rel="noreferrer">
