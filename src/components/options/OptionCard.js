@@ -2,12 +2,10 @@ import { Link } from "react-router-dom";
 import "./OptionCard.css";
 const OptionCard = ({ t }) => {
   return (
-    <div>
+    <div className="column">
       <Link to={`/places/${t.id}`}>
         <div className="card">
-          <div>
-            {t.name} - <span>{t.rating} stars</span>
-          </div>
+          {t.name} - <span>{t.rating} stars</span>
         </div>
       </Link>
     </div>

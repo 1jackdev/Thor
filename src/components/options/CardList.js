@@ -1,9 +1,9 @@
 import OptionCard from "./OptionCard";
+import "./CardList.css";
 import { useContext, useEffect, useState } from "react";
 import SearchContext from "../../hooks/SearchContext";
 import BackendApi from "../../api/api";
 const CardList = () => {
-
   const [things, setThings] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { searchData } = useContext(SearchContext);
@@ -20,7 +20,14 @@ const CardList = () => {
     return <p data-testid="loading">Loading &hellip;</p>;
   }
   if (things.length > 0) {
-    return things.map((t) => <OptionCard t={t} key={t.id} />);
+    return (
+      <div className="row">
+        <h4 className="title">Pick One of these great options!</h4>
+        {things.map((t) => (
+          <OptionCard t={t} key={t.id} />
+        ))}
+      </div>
+    );
   } else {
     return (
       <main>

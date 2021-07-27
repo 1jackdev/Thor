@@ -9,7 +9,7 @@ const Home = () => {
         <h1 className="title">
           <p style={{ color: "salmon" }}>Cool With Whatever!</p>
         </h1>
-        <div className="card">
+        <div className="">
           <p>Can't Decide? Let us pick for you!</p>
           <SearchForm searchData={searchData} setSearchData={setSearchData} />
         </div>
