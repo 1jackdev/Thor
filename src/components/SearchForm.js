@@ -38,12 +38,12 @@ const SearchForm = () => {
           value="restaurant"
           onChange={handleChange}
         />
-        <Label htmlFor="cafe">Cafe</Label>
+        <Label htmlFor="coffee">Coffee</Label>
         <Input
-          id="cafe"
+          id="coffee"
           name="type"
           type="radio"
-          value="cafe"
+          value="coffee"
           onChange={handleChange}
           required
         />
