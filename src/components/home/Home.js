@@ -5,16 +5,12 @@ const Home = () => {
   const { searchData, setSearchData } = useContext(SearchContext);
   function LoggedOut() {
     return (
-      <main className="container">
+      <main>
         <h2 className="title">
           <div style={{ color: "#FF5E5B" }}>Cool With Whatever!</div>
         </h2>
-        <div>
-          <h3 style={{ padding: "2rem" }}>
-            Can't Decide? Let us pick for you!
-          </h3>
-          <SearchForm searchData={searchData} setSearchData={setSearchData} />
-        </div>
+        <h3 style={{ padding: "2rem" }}>Can't Decide? Let us pick for you!</h3>
+        <SearchForm searchData={searchData} setSearchData={setSearchData} />
         {""}
       </main>
     );
