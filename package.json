@@ -21,7 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "surge": "REACT_APP_BASE_URL=https://cool-with-whatever.herokuapp.com npm run build && cp build/index.html build/200.html && surge build cool-with-whatever.surge.sh && echo http://cool-with-whatever.surge.sh"
+    "surge": "REACT_APP_BASE_URL=https://cool-with-whatever.herokuapp.com npm run build && cp build/index.html build/200.html && surge build cool-with-whatever.surge.sh && echo http://cool-with-whatever.surge.sh",
+    "prepack": "npm build"
   },
   "eslintConfig": {
     "extends": [
