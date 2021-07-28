@@ -3,5 +3,7 @@
 }
 
 .title {
-  margin-top: 50px;
+  text-align: center;
+  font-size: x-large;
+  margin: 2rem 1rem;
 }

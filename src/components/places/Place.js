@@ -6,7 +6,8 @@ import SearchContext from "../../hooks/SearchContext";
 import BackendApi from "../../api/api";
 export default function Place() {
   let closingTime;
-  let directionsLink;
+  let googleDirectionsLink;
+  let appleDirectionsLink;
   const { id } = useParams();
   const { searchData } = useContext(SearchContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +24,8 @@ export default function Place() {
   if (placeData) {
     closingTime = handlePlaceData(placeData);
     let address = placeData.location.display_address;
-    directionsLink = `https://maps.google.com/maps/dir/${searchData.location}/${address}`;
+    googleDirectionsLink = `https://maps.google.com/maps/dir/${searchData.location}/${address}`;
+    appleDirectionsLink = `http://maps.apple.com/?saddr=${searchData.location}&daddr=${address}`;
   }
 
   const closingTimeBox = () => {
@@ -31,9 +33,9 @@ export default function Place() {
       return <div></div>;
     } else {
       return (
-        <h2>
+        <h3>
           Closes at <span style={{ color: "green" }}>{closingTime}</span>
-        </h2>
+        </h3>
       );
     }
   };
@@ -49,16 +51,22 @@ export default function Place() {
         <div className="btn-back">
           <Link to="/">Search Again</Link>
         </div>
-        <div className="title">
-          <h4 style={{ color: "salmon" }}>{placeData.name}</h4>
+        <div className="name" style={{ color: "salmon" }}>
+          {placeData.name}
         </div>
         {""}
         <div>
           {closingTimeBox()}
-          <button className="btn">
+          <button className="btn google">
             {" "}
-            <a target="_blank" href={directionsLink} rel="noreferrer">
-              Lets Try It!
+            <a target="_blank" href={googleDirectionsLink} rel="noreferrer">
+              Google Maps
+            </a>{" "}
+          </button>
+          <button className="btn apple">
+            {" "}
+            <a target="_blank" href={appleDirectionsLink} rel="noreferrer">
+              Apple Maps
             </a>{" "}
           </button>
         </div>
