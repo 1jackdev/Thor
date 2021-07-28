@@ -47,7 +47,7 @@ export default function Place() {
     <div className="container">
       <main>
         <div className="btn-back">
-          <Link to="/">Go Back</Link>
+          <Link to="/">Search Again</Link>
         </div>
         <div className="title">
           <h4 style={{ color: "salmon" }}>{placeData.name}</h4>

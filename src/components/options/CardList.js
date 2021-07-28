@@ -3,14 +3,15 @@ import "./CardList.css";
 import { useContext, useEffect, useState } from "react";
 import SearchContext from "../../hooks/SearchContext";
 import BackendApi from "../../api/api";
+
 const CardList = () => {
-  const [things, setThings] = useState(null);
+  const [options, setOptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { searchData } = useContext(SearchContext);
   useEffect(() => {
     async function getOptions() {
-      let { data } = await BackendApi.getOptions(searchData);
-      setThings(data);
+      let { results } = await BackendApi.getOptions(searchData);
+      setOptions(results);
       setIsLoading(false);
     }
     getOptions();
@@ -19,15 +20,33 @@ const CardList = () => {
   if (isLoading) {
     return <p data-testid="loading">Loading &hellip;</p>;
   }
-  if (things.length > 0) {
+
+  function twoOptions() {
     return (
       <div className="row">
-        <h4 className="title">Pick One of these great options!</h4>
-        {things.map((t) => (
+        <div className="title">Take your pick!</div>
+        {options.map((t) => (
           <OptionCard t={t} key={t.id} />
         ))}
       </div>
     );
+  }
+
+  function oneOption() {
+    return (
+      <div>
+        <h4 className="title">We've only got 1 option for you. Easy Peasy!</h4>
+        {options.map((t) => (
+          <OptionCard t={t} key={t.id} />
+        ))}
+      </div>
+    );
+  }
+
+  if (options.length > 1) {
+    return twoOptions();
+  } else if (options.length === 1) {
+    return oneOption();
   } else {
     return (
       <main>

@@ -6,6 +6,7 @@ function App() {
   const INITIAL_STATE = {
     type: "restaurant",
     location: "",
+    distance: "",
   };
   const [searchData, setSearchData] = useState(INITIAL_STATE);
   return (
