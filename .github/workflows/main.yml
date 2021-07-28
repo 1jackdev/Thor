@@ -27,4 +27,5 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Push to surge site
+        run: npm i g surge
         run: npm run surge
