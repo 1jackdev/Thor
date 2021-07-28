@@ -43,16 +43,17 @@ const CardList = () => {
     );
   }
 
-  if (options.length > 1) {
-    return twoOptions();
-  } else if (options.length === 1) {
-    return oneOption();
-  } else {
+  if (options === null) {
     return (
       <main>
         <p>Uh oh. Looks like everythings closed. Try a different category!</p>
       </main>
     );
+  }
+  if (options.length > 1) {
+    return twoOptions();
+  } else if (options.length === 1) {
+    return oneOption();
   }
 };
 
