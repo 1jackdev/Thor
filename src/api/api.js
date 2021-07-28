@@ -17,7 +17,6 @@ class BackendApi {
     const params = method === "get" ? data : {};
 
     try {
-      console.log(url, method, data, params)
       return (await axios({ url, method, data, params })).data;
     } catch (err) {
       console.error("API Error:", err.response);
