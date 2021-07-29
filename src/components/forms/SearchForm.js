@@ -75,7 +75,6 @@ const SearchForm = () => {
           name="distance"
           value={searchData.distance}
           onChange={handleChange}
-          required
         >
           <FormControlLabel
             value="0.25"
@@ -100,6 +99,7 @@ const SearchForm = () => {
             control={<Radio />}
             label="5 miles"
             labelPlacement="top"
+            required
           />
         </RadioGroup>
         <FormGroup>

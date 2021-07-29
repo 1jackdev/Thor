@@ -1,5 +1,6 @@
 import OptionCard from "./OptionCard";
 import "./CardList.css";
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import SearchContext from "../../hooks/SearchContext";
 import BackendApi from "../../api/api";
@@ -23,19 +24,27 @@ const CardList = () => {
 
   function twoOptions() {
     return (
-      <div className="row">
+      <div className="container">
         <div className="title">Take your pick!</div>
-        {options.map((t) => (
-          <OptionCard t={t} key={t.id} />
-        ))}
+        <div className="btn-back">
+          <Link to="/">Search Again</Link>
+        </div>
+        <div className="row">
+          {options.map((t) => (
+            <OptionCard t={t} key={t.id} />
+          ))}
+        </div>
       </div>
     );
   }
 
   function oneOption() {
     return (
-      <div>
+      <div className="container">
         <h4 className="title">We've only got 1 option for you. Easy Peasy!</h4>
+        <div className="btn-back">
+          <Link to="/">Search Again</Link>
+        </div>
         {options.map((t) => (
           <OptionCard t={t} key={t.id} />
         ))}
