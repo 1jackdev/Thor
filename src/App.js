@@ -5,8 +5,8 @@ import Routes from "./routes/Routes";
 function App() {
   const INITIAL_STATE = {
     type: "restaurant",
+    distance: "0.25",
     location: "",
-    distance: "",
   };
   const [searchData, setSearchData] = useState(INITIAL_STATE);
   return (
