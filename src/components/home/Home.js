@@ -7,7 +7,7 @@ const Home = () => {
     return (
       <main>
         <h2 className="title">
-          <div style={{ color: "#FF5E5B" }}>Cool With Whatever!</div>
+          <div style={{ color: "#FF5E5B" }}>Cool With Whatever</div>
         </h2>
         <h3 style={{ padding: "2rem" }}>Can't Decide? Let us pick for you!</h3>
         <SearchForm searchData={searchData} setSearchData={setSearchData} />
