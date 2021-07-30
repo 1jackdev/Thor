@@ -29,6 +29,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm install g surge
-          npm run build && cp build/index.html build/200.html && surge build cool-with-whatever.surge.sh && echo http://cool-with-whatever.surge.sh
-        env:
-          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          npm run surge
