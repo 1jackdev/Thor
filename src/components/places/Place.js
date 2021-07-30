@@ -1,9 +1,11 @@
 import "./Place.css";
 import React, { useContext, useEffect, useState } from "react";
 import { handlePlaceData } from "../../helpers/formatters";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SearchContext from "../../hooks/SearchContext";
 import BackendApi from "../../api/api";
+import BackButton from "../buttons/BackButton";
+
 export default function Place() {
   let closingTime;
   let googleDirectionsLink;
@@ -48,9 +50,7 @@ export default function Place() {
   return (
     <div className="container">
       <main>
-        <div className="btn-back">
-          <Link to="/">Search Again</Link>
-        </div>
+        <BackButton />
         <div className="name" style={{ color: "salmon" }}>
           {placeData.name}
         </div>
