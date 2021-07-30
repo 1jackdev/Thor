@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import SearchContext from "../../hooks/SearchContext";
 import BackendApi from "../../api/api";
 import BackButton from "../buttons/BackButton";
+import { Redirect } from "react-router-dom";
 const CardList = () => {
   const [options, setOptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,13 +47,16 @@ const CardList = () => {
       </div>
     );
   }
+
+  if (options === undefined) return Redirect("/");
+
   if (options.length > 1) {
     return twoOptions();
   } else if (options.length === 1) {
     return oneOption();
   } else {
     return (
-      <main>
+      <main className="container">
         <BackButton />
         <p>Uh oh. Looks like everythings closed. Try a different category!</p>
       </main>

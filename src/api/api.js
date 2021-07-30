@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Redirect } from "react-router";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -20,8 +21,7 @@ class BackendApi {
       return (await axios({ url, method, data, params })).data;
     } catch (err) {
       console.error("API Error:", err.response);
-      let message = err.response.data.error.message;
-      throw Array.isArray(message) ? message : [message];
+      return Redirect("/");
     }
   }
 
