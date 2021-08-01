@@ -45,9 +45,7 @@ function handlePlaceData(obj) {
           : todaysHours[1].end;
     } else nextClosingTime = todaysHours[0].end;
     return formatTime(nextClosingTime);
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }
 
 module.exports = { handlePlaceData };
