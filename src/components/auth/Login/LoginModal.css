@@ -1,0 +1,13 @@
+.login-modal {
+  min-height: 20vh;
+  height: 60vh;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .login-modal {
+    height: 60vh;
+  }
+}

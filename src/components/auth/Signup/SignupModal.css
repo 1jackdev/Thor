@@ -1,0 +1,13 @@
+.signup-modal {
+  min-height: 20vh;
+  height: 90vh;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .signup-modal {
+    height: 60vh;
+  }
+}

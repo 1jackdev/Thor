@@ -4,11 +4,15 @@ import Home from "../components/home/Home";
 import CardList from "../components/options/CardList";
 import Place from "../components/places/Place";
 
-function Routes() {
+function Routes({ submitSignup, submitLogin, logout }) {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home
+          submitSignup={submitSignup}
+          submitLogin={submitLogin}
+          logout={logout}
+        />
       </Route>
       <Route exact path="/decide">
         <CardList title="Login" />
@@ -16,13 +20,6 @@ function Routes() {
       <Route exact path="/places/:id">
         <Place title="Place Details" />
       </Route>
-
-      {/* <Route exact path="/login">
-        <Login title="Login" submitLogin={submitLogin} />
-      </Route>
-      <Route exact path="/signup">
-        <Signup title="Signup" submitSignup={submitSignup} />
-      </Route> */}
       {/* <ProtectedRoute exact path="/profile">
         <Profile title="Profile" />
       </ProtectedRoute> */}

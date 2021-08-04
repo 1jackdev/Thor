@@ -1,14 +1,14 @@
 import OptionCard from "./OptionCard";
 import "./CardList.css";
 import { useContext, useEffect, useState } from "react";
-import SearchContext from "../../hooks/SearchContext";
+import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
 import BackButton from "../buttons/BackButton";
 import { Redirect } from "react-router-dom";
 const CardList = () => {
   const [options, setOptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { searchData } = useContext(SearchContext);
+  const { searchData } = useContext(UserContext);
   useEffect(() => {
     async function getOptions() {
       let { results } = await BackendApi.getOptions(searchData);

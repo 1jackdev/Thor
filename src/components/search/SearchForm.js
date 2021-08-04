@@ -11,12 +11,12 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
-import SearchContext from "../../hooks/SearchContext";
+import UserContext from "../../hooks/UserContext";
 import { useHistory } from "react-router";
 
 const SearchForm = () => {
   const history = useHistory();
-  const { searchData, setSearchData } = useContext(SearchContext);
+  const { searchData, setSearchData } = useContext(UserContext);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSearchData((prevState) => ({

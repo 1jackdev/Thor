@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Redirect } from "react-router";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -14,14 +13,15 @@ class BackendApi {
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
+    const headers = { Authorization: `Bearer ${BackendApi.token}` };
     const url = `${BASE_URL}/${endpoint}`;
     const params = method === "get" ? data : {};
-
     try {
-      return (await axios({ url, method, data, params })).data;
+      return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      console.error("API Error:", err.response);
-      return Redirect("/");
+      // console.error("API Error:", err.response);
+      let message = err.response.data.error.message;
+      throw Array.isArray(message) ? message : [message];
     }
   }
 
@@ -36,6 +36,23 @@ class BackendApi {
   static async getDetails(id) {
     let res = await this.request(`places/${id}`);
     return res;
+  }
+
+  // User API routes
+
+  static async LoginUser(credentials) {
+    let res = await this.request("auth/token", { credentials }, "post");
+    return res.token;
+  }
+
+  static async RegisterUser(credentials) {
+    let res = await this.request("auth/register", { credentials }, "post");
+    return res.token;
+  }
+
+  static async GetUser(username) {
+    let res = await this.request(`user/${username}`);
+    return res.user;
   }
 }
 

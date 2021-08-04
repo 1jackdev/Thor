@@ -2,7 +2,7 @@ import "./Place.css";
 import React, { useContext, useEffect, useState } from "react";
 import { handlePlaceData } from "../../helpers/formatters";
 import { useParams } from "react-router-dom";
-import SearchContext from "../../hooks/SearchContext";
+import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
 import BackButton from "../buttons/BackButton";
 
@@ -11,7 +11,7 @@ export default function Place() {
   let googleDirectionsLink;
   let appleDirectionsLink;
   const { id } = useParams();
-  const { searchData } = useContext(SearchContext);
+  const { searchData } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [placeData, setPlaceData] = useState(null);
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Place() {
 
   const closingTimeBox = () => {
     if (!closingTime) {
-      return <div></div>;
+      return;
     } else {
       return (
         <h3>
