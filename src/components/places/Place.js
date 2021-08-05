@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
 import BackButton from "../buttons/BackButton";
+import GoButton from "../buttons/GoButton";
 
 export default function Place() {
   let closingTime;
@@ -14,6 +15,7 @@ export default function Place() {
   const { searchData } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [placeData, setPlaceData] = useState(null);
+
   useEffect(() => {
     async function getDetails() {
       let { results } = await BackendApi.getDetails(id);
@@ -57,18 +59,16 @@ export default function Place() {
         {""}
         <div>
           {closingTimeBox()}
-          <button className="btn google">
-            {" "}
-            <a target="_blank" href={googleDirectionsLink} rel="noreferrer">
-              Google Maps
-            </a>{" "}
-          </button>
-          <button className="btn apple">
-            {" "}
-            <a target="_blank" href={appleDirectionsLink} rel="noreferrer">
-              Apple Maps
-            </a>{" "}
-          </button>
+          <GoButton
+            type={"google"}
+            href={googleDirectionsLink}
+            placeData={placeData}
+          />
+          <GoButton
+            type={"apple"}
+            href={appleDirectionsLink}
+            placeData={placeData}
+          />
         </div>
       </main>
     </div>

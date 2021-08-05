@@ -28,8 +28,13 @@ class BackendApi {
   // Category API routes
 
   static async getOptions(searchData) {
-    const { type, location, distance } = searchData;
-    let res = await this.request("search", { type, location, distance });
+    const { type, location, distance, username } = searchData;
+    let res = await this.request("search", {
+      type,
+      location,
+      distance,
+      username,
+    });
     return res;
   }
 
@@ -52,6 +57,20 @@ class BackendApi {
 
   static async GetUser(username) {
     let res = await this.request(`user/${username}`);
+    return res.user;
+  }
+
+  static async AddSelection(username, placeId, placeName) {
+    let res = await this.request(
+      `user/${username}/place`,
+      { placeId, placeName },
+      "post"
+    );
+    return res.user;
+  }
+
+  static async getSelections(username) {
+    let res = await this.request(`user/${username}/place`);
     return res.user;
   }
 }

@@ -3,6 +3,8 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../components/home/Home";
 import CardList from "../components/options/CardList";
 import Place from "../components/places/Place";
+import ProtectedRoute from "./ProtectedRoute";
+import Profile from "../components/profile/Profile";
 
 function Routes({ submitSignup, submitLogin, logout }) {
   return (
@@ -20,9 +22,9 @@ function Routes({ submitSignup, submitLogin, logout }) {
       <Route exact path="/places/:id">
         <Place title="Place Details" />
       </Route>
-      {/* <ProtectedRoute exact path="/profile">
+      <ProtectedRoute exact path="/profile">
         <Profile title="Profile" />
-      </ProtectedRoute> */}
+      </ProtectedRoute>
 
       <Redirect to="/" />
     </Switch>

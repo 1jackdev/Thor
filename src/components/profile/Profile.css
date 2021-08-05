@@ -1,0 +1,19 @@
+.list-group {
+  padding: 0;
+  width: 50%;
+  margin: 2rem;
+  text-align: center;
+  list-style-type: none;
+}
+
+.list-group-item {
+  border: 2px solid black;
+  background: #589ed8;
+  border-radius: 5%;
+  margin: 1rem;
+  text-decoration: none;
+}
+
+h3 {
+  margin: 2rem;
+}

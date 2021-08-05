@@ -17,6 +17,7 @@ import { useHistory } from "react-router";
 const SearchForm = () => {
   const history = useHistory();
   const { searchData, setSearchData } = useContext(UserContext);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSearchData((prevState) => ({

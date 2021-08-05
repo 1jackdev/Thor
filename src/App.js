@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
-
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import UserContext from "./hooks/UserContext";
 import Routes from "./routes/Routes";
 import useLocalStorage from "./hooks/LocalStorage";
 import BackendApi from "./api/api";
+
 function App() {
   const INITIAL_STATE = {
     type: "restaurant",
@@ -15,6 +15,7 @@ function App() {
   const [searchData, setSearchData] = useState(INITIAL_STATE);
   const [token, setToken] = useLocalStorage(null);
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     async function getCurrentUser() {
       if (token) {

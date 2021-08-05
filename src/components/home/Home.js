@@ -3,6 +3,7 @@ import SearchForm from "../search/SearchForm";
 import UserContext from "../../hooks/UserContext";
 import SignupModal from "../auth/Signup/SignupModal";
 import LoginModal from "../auth/Login/LoginModal";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = ({ submitSignup, submitLogin, logout }) => {
@@ -29,9 +30,12 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
     return (
       <div className="text-center">
         <h3>Welcome Back, {user.username || user.firstName}!</h3>
-        <div className="mr-4">
+        <div className="row">
           <div className="btn-logout" onClick={logout}>
             Log out for {user.username || user.firstName}
+          </div>
+          <div className="btn-acct">
+            <Link to="/profile">View Profile</Link>
           </div>
         </div>
       </div>

@@ -5,10 +5,12 @@ import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
 import BackButton from "../buttons/BackButton";
 import { Redirect } from "react-router-dom";
+
 const CardList = () => {
   const [options, setOptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { searchData } = useContext(UserContext);
+  const { user, searchData } = useContext(UserContext);
+  searchData.username = user ? user.username : "";
   useEffect(() => {
     async function getOptions() {
       let { results } = await BackendApi.getOptions(searchData);
