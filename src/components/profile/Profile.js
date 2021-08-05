@@ -27,10 +27,10 @@ const Profile = () => {
       <main>
         <BackButton />
         <h3>Oh, the places you've been...</h3>
-        <ListGroup className="">
+        <ListGroup>
           {userData.selections.map((s) => {
             return (
-              <ListGroupItem key={s.yelp_id} className="">
+              <ListGroupItem key={s.yelp_id}>
                 <ListGroupItemText>{s.name}</ListGroupItemText>
               </ListGroupItem>
             );
