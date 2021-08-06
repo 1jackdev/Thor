@@ -56,6 +56,7 @@ class BackendApi {
   }
 
   static async GetUser(username) {
+    console.log(username)
     let res = await this.request(`user/${username}`);
     return res.user;
   }
