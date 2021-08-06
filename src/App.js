@@ -20,9 +20,9 @@ function App() {
     async function getCurrentUser() {
       if (token) {
         try {
-          let { username } = jwt.decode(token);
+          let { sub } = jwt.decode(token);
           BackendApi.token = token;
-          let user = await BackendApi.GetUser(username);
+          let user = await BackendApi.GetUser(sub);
           setUser(user);
         } catch (err) {
           console.error("App loadUserInfo: problem loading", err);
