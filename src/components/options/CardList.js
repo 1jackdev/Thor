@@ -11,6 +11,7 @@ const CardList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { user, searchData } = useContext(UserContext);
   searchData.username = user ? user.username : "";
+  
   useEffect(() => {
     async function getOptions() {
       let { results } = await BackendApi.getOptions(searchData);

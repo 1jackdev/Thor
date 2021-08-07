@@ -47,6 +47,10 @@
   font-weight: 500;
 }
 
+hr {
+  border: 1px solid black;
+}
+
 /* Float four columns side by side */
 .column {
   float: left;
