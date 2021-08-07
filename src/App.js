@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import UserContext from "./hooks/UserContext";

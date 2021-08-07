@@ -1,11 +1,11 @@
 import "./BackButton.css"
 import { Link } from "react-router-dom";
-
+import {Button} from "reactstrap"
 const BackButton = () => {
   return (
-    <div className="btn-back">
+    <Button className="btn-back">
       <Link to="/">Search Again</Link>
-    </div>
+    </Button>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "@material-ui/core/Modal";
+import { Modal, Button } from "@material-ui/core";
 import LoginForm from "./LoginForm";
 import "./LoginModal.css";
 
@@ -16,9 +16,9 @@ const LoginModal = ({ submitLogin }) => {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <Button variant="outlined" color="primary" onClick={handleOpen}>
         Login
-      </button>
+      </Button>
       <Modal
         open={open}
         className="login-modal"

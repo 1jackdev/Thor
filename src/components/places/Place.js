@@ -1,6 +1,6 @@
 import "./Place.css";
 import React, { useContext, useEffect, useState } from "react";
-import { handlePlaceData } from "../../helpers/formatters";
+import { handlePlaceData, sortCategories } from "../../helpers/formatters";
 import { useParams } from "react-router-dom";
 import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
@@ -9,6 +9,7 @@ import GoButton from "../buttons/GoButton";
 
 export default function Place() {
   let closingTime;
+  let categories;
   let googleDirectionsLink;
   let appleDirectionsLink;
   const { id } = useParams();
@@ -26,8 +27,9 @@ export default function Place() {
   }, [id]);
 
   if (placeData) {
-    closingTime = handlePlaceData(placeData);
     let address = placeData.location.display_address;
+    closingTime = handlePlaceData(placeData);
+    categories = sortCategories(placeData.categories);
     googleDirectionsLink = `https://maps.google.com/maps/dir/${searchData.location}/${address}`;
     appleDirectionsLink = `http://maps.apple.com/?saddr=${searchData.location}&daddr=${address}`;
   }
@@ -53,11 +55,22 @@ export default function Place() {
     <div className="container">
       <main>
         <BackButton />
-        <div className="name" style={{ color: "salmon" }}>
+        <div className="name" style={{ color: "#784F41" }}>
           {placeData.name}
         </div>
-        {""}
         <div>
+          <h4>
+            {" "}
+            <i>What's it like?</i>{" "}
+          </h4>
+          <ul className="category-list">
+            {categories.map((c) => (
+              <li key={c.alias}>{c.title + " "}</li>
+            ))}
+          </ul>
+        </div>
+        {""}
+        <div className="btns">
           {closingTimeBox()}
           <GoButton
             type={"google"}

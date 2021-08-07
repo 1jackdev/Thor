@@ -5,12 +5,14 @@
   background: white;
   text-align: center;
   border: 1px solid #eaeaea;
+  background: #f4d8cd;
 }
 
 input {
   font-size: 16px;
   padding: 0.5rem;
   margin: 0.5rem;
+  background: #FBF2EE;
 }
 
 @media (max-width: 768px) {

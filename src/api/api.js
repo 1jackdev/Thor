@@ -11,7 +11,6 @@ class BackendApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
 
     const headers = { Authorization: `Bearer ${BackendApi.token}` };
     const url = `${BASE_URL}/${endpoint}`;
@@ -19,7 +18,6 @@ class BackendApi {
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      // console.error("API Error:", err.response);
       let message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
     }
@@ -56,7 +54,6 @@ class BackendApi {
   }
 
   static async GetUser(username) {
-    console.log(username)
     let res = await this.request(`user/${username}`);
     return res.user;
   }
