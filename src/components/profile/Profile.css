@@ -1,20 +1,12 @@
-.list-group {
+h3 {
+  margin: 2rem;
+}
+
+.profile-ul {
   padding: 0;
   max-width: 400px;
-  width: 75%;
+  width: 90%;
   margin: 2rem;
   text-align: center;
   list-style-type: none;
-}
-
-.list-group-item {
-  border: 2px solid black;
-  background: #589ed8;
-  border-radius: 5%;
-  margin: 1rem;
-  text-decoration: none;
-}
-
-h3 {
-  margin: 2rem;
 }

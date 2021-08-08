@@ -66,7 +66,7 @@ function App() {
       <UserContext.Provider
         value={{ user, setUser, searchData, setSearchData }}
       >
-        <div className="App">
+        <div>
           <Routes
             submitLogin={submitLogin}
             submitSignup={submitSignup}

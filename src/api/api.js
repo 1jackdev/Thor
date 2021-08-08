@@ -58,10 +58,10 @@ class BackendApi {
     return res.user;
   }
 
-  static async AddSelection(username, placeId, placeName) {
+  static async AddSelection(username, placeId, placeName, categories) {
     let res = await this.request(
       `user/${username}/place`,
-      { placeId, placeName },
+      { placeId, placeName, categories },
       "post"
     );
     return res.user;
