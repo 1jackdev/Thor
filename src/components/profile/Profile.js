@@ -3,7 +3,7 @@ import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
 import BackButton from "../buttons/BackButton";
 import CategoryCard from "../categories/CategoryCard";
-import { formatSelections } from "../../helpers/formatters";
+import formatSelections from "../../helpers/selections";
 import "./Profile.css";
 
 const Profile = () => {
