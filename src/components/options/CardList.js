@@ -10,7 +10,7 @@ const CardList = () => {
   const [options, setOptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { user, searchData } = useContext(UserContext);
-  searchData.username = user ? user.username : "";
+  searchData.username = user ? user.username : null;
   
   useEffect(() => {
     async function getOptions() {
