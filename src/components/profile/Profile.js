@@ -27,23 +27,46 @@ const Profile = () => {
   if (userData) {
     categoryArr = formatSelections(userData.selections);
   }
+
+  function preferences() {
+    if (categoryArr.length) {
+      return (
+        <div>
+          <div>
+            {" "}
+            <h2> Hi, {user.firstName}!</h2>
+            <br />{" "}
+            <p style={{ fontSize: "20px" }}>
+              According to your selections, these are your favorite categories.
+            </p>
+          </div>
+          <ul className="profile-ul">
+            {categoryArr.map((c) => {
+              return <CategoryCard key={c} cat={c} />;
+            })}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div>
+            {" "}
+            <h2> Hi, {user.firstName}!</h2>
+            <br />{" "}
+          </div>
+          <div>
+            Once we have a good idea of your preferences, we'll show them here!
+          </div>
+        </div>
+      );
+    }
+  }
   return (
     <div className="container">
       <main>
         <BackButton />
-        <div>
-          {" "}
-          <h2> Hi, {user.firstName}!</h2>
-          <br />{" "}
-          <p style={{ fontSize: "20px" }}>
-            According to your selections, these are your favorite categories.
-          </p>
-        </div>
-        <ul className="profile-ul">
-          {categoryArr.map((c) => {
-            return <CategoryCard key={c} cat={c} />;
-          })}
-        </ul>
+        {preferences()}
       </main>
     </div>
   );

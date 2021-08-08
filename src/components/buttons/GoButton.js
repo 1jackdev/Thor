@@ -11,8 +11,13 @@ const GoButton = ({ type, href, placeData }) => {
       try {
         let placeId = placeData.id;
         let placeName = placeData.name;
-        let categories = placeData.categories.map((c)=> c.title);
-        await BackendApi.AddSelection(user.username, placeId, placeName, categories);
+        let categories = placeData.categories;
+        await BackendApi.AddSelection(
+          user.username,
+          placeId,
+          placeName,
+          categories
+        );
       } catch (e) {
         console.error(e);
       }
