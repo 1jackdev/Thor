@@ -1,3 +1,5 @@
+const genericCategories = ["Bars"];
+
 function formatSelections(selections) {
   let categories = {};
   let categoryArr = [];
@@ -5,7 +7,7 @@ function formatSelections(selections) {
     let name = selection.name;
     let selectionCategories = selection.categories;
     for (let a of selectionCategories) {
-      if (categories[a]) {
+      if (categories[a] && genericCategories.indexOf(a) === -1) {
         categories[a].push(name);
       } else categories[a] = [name];
     }

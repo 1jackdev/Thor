@@ -6,6 +6,8 @@
   text-align: center;
   border: 1px solid #eaeaea;
   background: #f4d8cd;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
 }
 
 input {

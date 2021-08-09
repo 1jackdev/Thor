@@ -40,5 +40,31 @@ a {
 }
 
 .btns {
-  margin-top: 2rem;
+  bottom: 0;
+  margin-top: 5rem;
+}
+
+.descriptor {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.closing {
+  margin-top: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 2px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  width: 50%;
+  margin: auto;
+}
+
+.bubble {
+  border-radius: 5% / 5%;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 2px;
+}
+
+@media (max-width: 768px) {
+  img {
+    left: 0;
+  }
 }

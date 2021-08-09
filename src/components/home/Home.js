@@ -31,11 +31,11 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
   function LoggedIn() {
     return (
       <div className="row">
-        <Button variant="contained" color="secondary" className="logout" onClick={logout}>
+        <Button variant="contained" id="logout" onClick={logout}>
           Log out
         </Button>
-        <Button variant="contained" color="primary" className="btn-acct">
-          <Link to="/profile">View Profile</Link>
+        <Button variant="contained" id="btn-acct">
+          <Link to="/profile">Profile</Link>
         </Button>
       </div>
     );

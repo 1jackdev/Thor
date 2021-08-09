@@ -7,28 +7,22 @@
   padding: 0;
 }
 
-.btn-logout {
-    display: inline-block;
+#logout {
     margin-bottom: 0;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: #66f5ff;
-    padding: 2px 6px;
+    background: #df6932;
+    color: white;
+    width: 40%;
+    padding: 10px;
     border-radius: 10px;
     border: 1px solid transparent;
-    text-decoration: none;
   }
 
-.btn-acct {
-    display: inline-block;
+#btn-acct {
     margin-bottom: 0;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background: #020100;
-    padding: 2px 6px;
+    background: rgb(53, 126, 209);
+    color: white;
+    width: 40%;
+    padding: 10px;
     border-radius: 10px;
     border: 1px solid transparent;
-    text-decoration: none;
   }

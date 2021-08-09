@@ -38,11 +38,7 @@ export default function Place() {
     if (!closingTime) {
       return;
     } else {
-      return (
-        <h3>
-          Closes at <span style={{ color: "green" }}>{closingTime}</span>
-        </h3>
-      );
+      return <h3 className="closing">Closes at {closingTime}</h3>;
     }
   };
   // convert hours
@@ -59,17 +55,17 @@ export default function Place() {
           {placeData.name}
         </div>
         <div>
-          <h4>
-            {" "}
-            <i>What's it like?</i>{" "}
-          </h4>
+          <span className="descriptor">What's it like?</span>{" "}
           <ul className="category-list">
             {categories.map((c) => (
-              <li key={c.alias}>{c.title + " "}</li>
+              <li className="bubble" key={c.alias}>
+                {c.title + " "}
+              </li>
             ))}
           </ul>
         </div>
         {""}
+
         <div className="btns">
           {closingTimeBox()}
           <GoButton

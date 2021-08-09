@@ -11,7 +11,7 @@ const CardList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { user, searchData } = useContext(UserContext);
   searchData.username = user ? user.username : null;
-  
+
   useEffect(() => {
     async function getOptions() {
       let { results } = await BackendApi.getOptions(searchData);
@@ -25,11 +25,15 @@ const CardList = () => {
     return <p data-testid="loading">Loading &hellip;</p>;
   }
 
+  if (options && options[1]) options[1].weight = 0;
+
   function twoOptions() {
     return (
       <div className="container">
         <div className="title">Take your pick!</div>
-        <BackButton />
+        <div className="options-back-btn">
+          <BackButton />
+        </div>
         <div className="row">
           {options.map((t) => (
             <OptionCard t={t} key={t.id} />

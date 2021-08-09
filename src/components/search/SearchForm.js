@@ -117,8 +117,7 @@ const SearchForm = () => {
             required
           />
         </FormGroup>
-
-        <Button id="btn" variant="contained" color="primary" type="submit">
+        <Button id="btn" variant="contained" type="submit">
           Give Me Some Options
         </Button>
       </FormControl>
