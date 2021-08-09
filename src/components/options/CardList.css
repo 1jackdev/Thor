@@ -11,3 +11,7 @@
 .options-back-btn {
   margin-bottom: 3rem;
 }
+
+.empty p {
+  margin: 3rem;
+}

@@ -63,7 +63,7 @@ const CardList = () => {
     return oneOption();
   } else {
     return (
-      <main className="container">
+      <main className="empty">
         <BackButton />
         <p>Uh oh. Looks like everythings closed. Try a different category!</p>
       </main>
