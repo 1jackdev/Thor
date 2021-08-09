@@ -18,10 +18,11 @@ const OptionCard = ({ t }) => {
               <div>{t.name}</div>
               <p>{t.rating} ⭐️</p>
             </div>
-            <hr />
             <ul className="category-list">
               {categories.map((c) => (
-                <li key={c.alias}>{c.title + " "}</li>
+                <li className="bubble" key={c.alias}>
+                  {c.title + " "}
+                </li>
               ))}
             </ul>
           </div>
@@ -40,10 +41,11 @@ const OptionCard = ({ t }) => {
               <div>{t.name}</div>
               <p>{t.rating} ⭐️</p>
             </div>
-            <hr />
             <ul className="category-list">
               {categories.map((c) => (
-                <li key={c.alias}>{c.title + " "}</li>
+                <li className="bubble" key={c.alias}>
+                  {c.title + " "}
+                </li>
               ))}
             </ul>
           </div>
