@@ -16,12 +16,10 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
       <div className="row">
         <SignupModal
           buttonLabel={"Open Modal"}
-          className={"classname"}
           submitSignup={submitSignup}
         />
         <LoginModal
           buttonLabel={"Open Modal"}
-          className={"classname"}
           submitLogin={submitLogin}
         />
       </div>
@@ -44,12 +42,10 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
   return (
     <div className="container">
       <main>
-        <div className="container">
+        <div className="container top-btns">
           {user ? LoggedIn() : LoggedOut()}
           <h2 className="title">
-            <div className style={{ color: "#379CA9" }}>
-              TryThis!
-            </div>
+            <div style={{ color: "#379CA9" }}>TryThis!</div>
           </h2>
         </div>
 

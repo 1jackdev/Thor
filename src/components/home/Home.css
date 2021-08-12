@@ -1,28 +1,38 @@
 .row {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .top {
   padding: 0;
 }
 
+.top-btns {
+  width: 50%;
+}
+
 #logout {
-    margin-bottom: 0;
-    background: #df6932;
-    color: white;
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-  }
+  margin-bottom: 0;
+  background: #df6932;
+  color: white;
+  width: 40%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
 
 #btn-acct {
-    margin-bottom: 0;
-    background: rgb(53, 126, 209);
-    color: white;
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid transparent;
+  margin-bottom: 0;
+  background: rgb(53, 126, 209);
+  color: white;
+  width: 40%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+@media (max-width: 768px) {
+  .top-btns {
+    width: 75%;
   }
+}
