@@ -48,7 +48,7 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
           {user ? LoggedIn() : LoggedOut()}
           <h2 className="title">
             <div className style={{ color: "#379CA9" }}>
-              Cool With Whatever
+              TryThis!
             </div>
           </h2>
         </div>
