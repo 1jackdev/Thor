@@ -1,10 +1,16 @@
-import "./BackButton.css"
-import { Link } from "react-router-dom";
-import {Button} from "reactstrap"
+import "./BackButton.css";
+import { useHistory } from "react-router";
+import { Button } from "reactstrap";
+
 const BackButton = () => {
+  const history = useHistory();
+  
+  function toHome() {
+    history.push("/");
+  }
   return (
-    <Button className="btn-back">
-      <Link to="/">Search Again</Link>
+    <Button className="btn-back" onClick={toHome}>
+      Search Again
     </Button>
   );
 };

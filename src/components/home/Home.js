@@ -1,27 +1,26 @@
 import React, { useContext } from "react";
+
 import SearchForm from "../search/SearchForm";
 import UserContext from "../../hooks/UserContext";
 import SignupModal from "../auth/Signup/SignupModal";
 import LoginModal from "../auth/Login/LoginModal";
-import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router";
 import "./Home.css";
 
 const Home = ({ submitSignup, submitLogin, logout }) => {
   const { user } = useContext(UserContext);
   const { searchData, setSearchData } = useContext(UserContext);
+  const history = useHistory();
+  function toProfile() {
+    history.push("/profile");
+  }
 
   function LoggedOut() {
     return (
       <div className="row">
-        <SignupModal
-          buttonLabel={"Open Modal"}
-          submitSignup={submitSignup}
-        />
-        <LoginModal
-          buttonLabel={"Open Modal"}
-          submitLogin={submitLogin}
-        />
+        <SignupModal buttonLabel={"Open Modal"} submitSignup={submitSignup} />
+        <LoginModal buttonLabel={"Open Modal"} submitLogin={submitLogin} />
       </div>
     );
   }
@@ -32,8 +31,8 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
         <Button variant="contained" id="logout" onClick={logout}>
           Log out
         </Button>
-        <Button variant="contained" id="btn-acct">
-          <Link to="/profile">Profile</Link>
+        <Button variant="contained" id="btn-acct" onClick={toProfile}>
+          Profile
         </Button>
       </div>
     );

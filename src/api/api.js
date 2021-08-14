@@ -11,7 +11,6 @@ class BackendApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-
     const headers = { Authorization: `Bearer ${BackendApi.token}` };
     const url = `${BASE_URL}/${endpoint}`;
     const params = method === "get" ? data : {};
@@ -69,6 +68,11 @@ class BackendApi {
 
   static async getSelections(username) {
     let res = await this.request(`user/${username}/place`);
+    return res.user;
+  }
+
+  static async deleteSelections(username) {
+    let res = await this.request(`user/${username}/selections`, {}, "delete");
     return res.user;
   }
 }

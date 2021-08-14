@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Modal, Button } from "@material-ui/core";
 import SignupForm from "./SignupForm";
 import "./SignupModal.css";
 
 const SignupModal = ({ submitSignup }) => {
   const [open, setOpen] = useState(false);
-
+  const rootRef = useRef(null);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -24,8 +24,11 @@ const SignupModal = ({ submitSignup }) => {
         className="signup-modal"
         onClose={handleClose}
         aria-labelledby="signup-modal"
+        container={() => rootRef.current}
       >
-        <SignupForm submitSignup={submitSignup} handleClose={handleClose} />
+        <div ref={rootRef}>
+          <SignupForm submitSignup={submitSignup} handleClose={handleClose} />
+        </div>
       </Modal>
     </div>
   );
