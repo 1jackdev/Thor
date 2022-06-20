@@ -9,7 +9,6 @@ const HomeButton = () => {
   }
   return (
     <Button
-      className="btn-home"
       color="info"
       variant="contained"
       size="small"

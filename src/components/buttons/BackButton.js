@@ -9,7 +9,6 @@ const BackButton = () => {
   }
   return (
     <Button
-      className="btn-back"
       color="secondary"
       variant="contained"
       size="small"

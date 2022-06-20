@@ -5,6 +5,7 @@
 .option-list {
   display: flex;
   flex-direction: column;
+  width: 65%;
 }
 
 .one-result {
@@ -14,14 +15,22 @@
 @media (min-width: 768px) {
   .option-list {
     flex-direction: row;
+    width: 50%;
   }
 }
 
 .title {
   text-align: center;
   font-size: x-large;
-  margin: 2rem 1rem;
+  margin: auto;
+  margin-bottom: 8px;
   color: white;
+}
+
+@media (min-width: 768px) {
+  .title {
+    margin: 2rem;
+  }
 }
 
 .options-back-btn {

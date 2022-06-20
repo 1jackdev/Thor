@@ -39,10 +39,10 @@ const CardList = ({ setSearchErrors }) => {
   function twoOptions() {
     return (
       <div className="container">
-        <div className="title">Take your pick!</div>
         <div className="options-back-btn">
           <HomeButton />
         </div>
+        <div className="title">Take your pick!</div>
         <div className="option-list">
           {options.map((t) => (
             <OptionCard t={t} key={t.id} />
