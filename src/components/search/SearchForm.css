@@ -1,7 +1,5 @@
-#btn {
-  background: green;
-  color: white;
-  margin: 1rem 0;
+.options-btn {
+  margin-top: 32px;
 }
 
 .label {

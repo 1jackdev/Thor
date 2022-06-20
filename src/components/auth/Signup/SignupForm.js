@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Alert, Form, Input, Label } from "reactstrap";
-import { FormControl, FormGroup, Button } from "@material-ui/core";
+import FormControl from "@mui/material/FormControl";
+import FormGroup from "@mui/material/FormGroup";
+import Button from "@mui/material/Button";
 import "./SignupForm.css";
 
 const SignupForm = ({ submitSignup, handleClose }) => {
@@ -9,8 +11,6 @@ const SignupForm = ({ submitSignup, handleClose }) => {
     username: "",
     password: "",
     firstName: "",
-    lastName: "",
-    email: "",
   });
 
   const [formErrors, setFormErrors] = useState([]);
@@ -43,6 +43,7 @@ const SignupForm = ({ submitSignup, handleClose }) => {
             First Name
           </Label>
           <Input
+            className="signup-field"
             id="first-name"
             name="firstName"
             type="text"
@@ -53,36 +54,11 @@ const SignupForm = ({ submitSignup, handleClose }) => {
             required
             bsSize="lg"
           />
-          <Label className="label" htmlFor="last-name">
-            Last Name
-          </Label>
-          <Input
-            id="last-name"
-            name="lastName"
-            type="text"
-            variant="outlined"
-            placeholder="Smith"
-            value={credentials.lastName}
-            onChange={handleChange}
-            required
-          />
-          <Label className="label" htmlFor="email">
-            Email
-          </Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            variant="outlined"
-            placeholder="billygateslol@gmail.com"
-            value={credentials.email}
-            onChange={handleChange}
-            required
-          />
           <Label className="label" htmlFor="username">
             Username
           </Label>
           <Input
+            className="signup-field"
             id="username"
             name="username"
             type="username"
@@ -95,6 +71,7 @@ const SignupForm = ({ submitSignup, handleClose }) => {
             Password
           </Label>
           <Input
+            className="signup-field"
             id="password"
             name="password"
             type="password"
@@ -104,7 +81,7 @@ const SignupForm = ({ submitSignup, handleClose }) => {
             required
           />
         </FormGroup>
-        {formErrors.length ? <Alert color="danger">{formErrors}</Alert> : null}
+        {formErrors.length ? <Alert>{formErrors}</Alert> : null}
         <Button
           style={{ margin: "2rem" }}
           variant="contained"

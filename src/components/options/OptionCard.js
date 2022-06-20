@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import "./OptionCard.css";
+import { Link } from "react-router-dom";
+import Chip from "@mui/material/Chip";
 import { sortCategories } from "../../helpers/formatters";
 const OptionCard = ({ t }) => {
   // sort categories alphabetically
@@ -7,10 +8,14 @@ const OptionCard = ({ t }) => {
   let categories = sortCategories(t.categories);
   function recommended() {
     return (
-      <div className="column">
+      <div className="card-container">
         <div className="msg">
           {" "}
-          <span className="rec-span">Recommendation</span>{" "}
+          <Chip
+            variant="contained"
+            color="primary"
+            label="Recommendation"
+          ></Chip>
         </div>
         <Link to={`/places/${t.id}`}>
           <div className="rec card">
@@ -33,8 +38,14 @@ const OptionCard = ({ t }) => {
 
   function notRecommended() {
     return (
-      <div className="column">
-        <div className="msg">Try something new</div>
+      <div className="card-container">
+        <div className="msg">
+          <Chip
+            variant="outlined"
+            color="primary"
+            label="Try something new"
+          ></Chip>
+        </div>
         <Link to={`/places/${t.id}`}>
           <div className="card">
             <div className="option-title">

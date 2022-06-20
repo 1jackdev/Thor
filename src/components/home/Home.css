@@ -1,3 +1,18 @@
+body {
+  background: black;
+}
+
+.container {
+  padding: 32px 0;
+  margin: auto;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -8,31 +23,22 @@
 }
 
 .top-btns {
-  width: 50%;
+  width: 75%;
 }
 
-#logout {
-  margin-bottom: 0;
-  background: #df6932;
-  color: white;
-  width: 40%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid transparent;
+.home-intro {
+  margin: 0 0 64px 0;
 }
 
-#btn-acct {
-  margin-bottom: 0;
-  background: rgb(53, 126, 209);
-  color: white;
-  width: 40%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid transparent;
+.logged-in-btn {
+  margin: auto;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .top-btns {
-    width: 75%;
+    width: 50%;
+  }
+  .logged-in-btn {
+    width: 30%;
   }
 }

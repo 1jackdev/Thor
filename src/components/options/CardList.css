@@ -2,16 +2,28 @@
   display: flex;
 }
 
+.option-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.one-result {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .option-list {
+    flex-direction: row;
+  }
+}
+
 .title {
   text-align: center;
   font-size: x-large;
   margin: 2rem 1rem;
+  color: white;
 }
 
 .options-back-btn {
   margin-bottom: 3rem;
-}
-
-.empty p {
-  margin: 3rem;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../../hooks/UserContext";
 import BackendApi from "../../api/api";
-import BackButton from "../buttons/BackButton";
+import HomeButton from "../buttons/HomeButton";
 import AlertDialog from "../buttons/AlertDialog";
 import CategoryCard from "../categories/CategoryCard";
 import formatSelections from "../../helpers/selections";
@@ -32,7 +32,7 @@ const Profile = () => {
 
   function hasPreferences() {
     return (
-      <div>
+      <div style={{ color: "white" }}>
         <div>
           {" "}
           <h2> Hi, {user.firstName}!</h2>
@@ -53,7 +53,7 @@ const Profile = () => {
 
   function noPreferences() {
     return (
-      <div>
+      <div style={{ color: "white" }}>
         <div>
           {" "}
           <h2> Hi, {user.firstName}!</h2>
@@ -69,7 +69,7 @@ const Profile = () => {
   return (
     <div className="container">
       <main>
-        <BackButton />
+        <HomeButton />
         {categoryArr.length ? hasPreferences() : noPreferences()}
       </main>
     </div>

@@ -3,9 +3,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { handlePlaceData, sortCategories } from "../../helpers/formatters";
 import { useParams } from "react-router-dom";
 import UserContext from "../../hooks/UserContext";
+import useGeolocation from "../../hooks/useGeolocation";
 import BackendApi from "../../api/api";
-import BackButton from "../buttons/BackButton";
 import GoButton from "../buttons/GoButton";
+import HomeButton from "../buttons/HomeButton";
+import BackButton from "../buttons/BackButton";
 
 export default function Place() {
   let closingTime;
@@ -14,6 +16,7 @@ export default function Place() {
   let appleDirectionsLink;
   const { id } = useParams();
   const { searchData } = useContext(UserContext);
+  const geo = useGeolocation() || null;
   const [isLoading, setIsLoading] = useState(true);
   const [placeData, setPlaceData] = useState(null);
 
@@ -26,12 +29,16 @@ export default function Place() {
     getDetails();
   }, [id]);
 
+  const departingAddr = !geo.error
+    ? geo.coordinates.lat + "," + geo.coordinates.lng
+    : searchData.location;
+
   if (placeData) {
     let address = placeData.location.display_address;
     closingTime = handlePlaceData(placeData);
     categories = sortCategories(placeData.categories);
-    googleDirectionsLink = `https://maps.google.com/maps/dir/${searchData.location}/${address}`;
-    appleDirectionsLink = `http://maps.apple.com/?saddr=${searchData.location}&daddr=${address}`;
+    googleDirectionsLink = `https://maps.google.com/maps/dir/${departingAddr}/${address}`;
+    appleDirectionsLink = `http://maps.apple.com/?saddr=${departingAddr}&daddr=${address}`;
   }
 
   const closingTimeBox = () => {
@@ -41,7 +48,6 @@ export default function Place() {
       return <h3 className="closing">Closes at {closingTime}</h3>;
     }
   };
-  // convert hours
 
   if (isLoading) {
     return <p data-testid="loading">Loading &hellip;</p>;
@@ -49,25 +55,27 @@ export default function Place() {
 
   return (
     <div className="container">
-      <main>
-        <BackButton />
-        <div className="name" style={{ color: "#784F41" }}>
+      <div className="page">
+        <div className="nav-btn-drawer">
+          <BackButton />
+          <HomeButton />
+        </div>
+        <div className="name" style={{ color: "white" }}>
           {placeData.name}
         </div>
-        <div>
+        <div className="place-details">
           <span className="descriptor">What's it like?</span>{" "}
           <ul className="category-list">
             {categories.map((c) => (
-              <li className="bubble" key={c.alias}>
+              <li className="place-bubble" key={c.alias}>
                 {c.title + " "}
               </li>
             ))}
           </ul>
         </div>
         {""}
-
-        <div className="btns">
-          {closingTimeBox()}
+        {closingTimeBox()}
+        <div className="dir-btns">
           <GoButton
             type={"google"}
             href={googleDirectionsLink}
@@ -79,7 +87,7 @@ export default function Place() {
             placeData={placeData}
           />
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import "./GoButton.css";
 import { useContext } from "react";
+import Button from "@mui/material/Button";
 
 import BackendApi from "../../api/api";
 import UserContext from "../../hooks/UserContext";
@@ -9,26 +9,24 @@ const GoButton = ({ type, href, placeData }) => {
   async function handleClick() {
     if (user) {
       try {
-        let placeId = placeData.id;
-        let placeName = placeData.name;
-        let categories = placeData.categories;
-        await BackendApi.AddSelection(
-          user.username,
-          placeId,
-          placeName,
-          categories
-        );
+        const { id, name, categories } = placeData;
+        await BackendApi.AddSelection(user.username, id, name, categories);
       } catch (e) {
         console.error(e);
       }
     }
   }
   return (
-    <button onClick={handleClick} className={"btn-go " + type}>
-      <a href={href} target="_blank" rel="noreferrer">
+    <a href={href} target="_blank" rel="noreferrer">
+      <Button
+        onClick={handleClick}
+        variant="contained"
+        size="large"
+        color={type === "google" ? "success" : "primary"}
+      >
         {type} Maps
-      </a>
-    </button>
+      </Button>
+    </a>
   );
 };
 

@@ -1,21 +1,21 @@
-import "./CategoryCard.css";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 const CategoryCard = ({ cat }) => {
   return (
-    <div>
-      <div className="cat-card">
-        <h2 style={{ margin: "1rem 0" }}>{cat[0]}</h2>
-        <ul className="cat-ul">
+    <Card style={{ marginTop: "16px" }}>
+      <CardHeader title={cat[0]}></CardHeader>
+      <CardContent>
+        <List>
           {cat[1].map((f) => {
-            return (
-              <li className="cat-li" key={f}>
-                {f}
-              </li>
-            );
+            return <ListItem key={f}>{f}</ListItem>;
           })}
-        </ul>
-      </div>
-    </div>
+        </List>
+      </CardContent>
+    </Card>
   );
 };
 

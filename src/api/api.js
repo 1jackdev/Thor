@@ -17,7 +17,8 @@ class BackendApi {
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      let message = err.response.data.error.message;
+      const message =
+        err?.response?.data.error.message || err.error.description;
       throw Array.isArray(message) ? message : [message];
     }
   }
@@ -25,10 +26,12 @@ class BackendApi {
   // Category API routes
 
   static async getOptions(searchData) {
-    const { type, location, distance, username } = searchData;
+    const { type, location, distance, username, coordinates } = searchData;
     let res = await this.request("search", {
       type,
       location,
+      lat: coordinates.lat,
+      lng: coordinates.lng,
       distance,
       username,
     });

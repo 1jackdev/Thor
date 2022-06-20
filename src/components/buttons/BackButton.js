@@ -1,16 +1,22 @@
-import "./BackButton.css";
 import { useHistory } from "react-router";
-import { Button } from "reactstrap";
+import Button from "@mui/material/Button";
 
 const BackButton = () => {
   const history = useHistory();
-  
-  function toHome() {
-    history.push("/");
+
+  function toOptions() {
+    console.log(history);
+    history.push("/decide");
   }
   return (
-    <Button className="btn-back" onClick={toHome}>
-      Search Again
+    <Button
+      className="btn-back"
+      color="secondary"
+      variant="contained"
+      size="small"
+      onClick={toOptions}
+    >
+      Back to Options
     </Button>
   );
 };

@@ -4,8 +4,10 @@ import { useHistory } from "react-router";
 import { useContext } from "react";
 import BackendApi from "../../api/api";
 import UserContext from "../../hooks/UserContext";
-
-import { Button, Dialog, DialogActions, DialogTitle } from "@material-ui/core";
+import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
+import DialogActions from "@mui/material/DialogActions";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const AlertDialog = () => {
   const { user } = useContext(UserContext);

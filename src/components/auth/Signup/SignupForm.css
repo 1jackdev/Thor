@@ -1,8 +1,4 @@
 .signup-modal-card {
-  height: 90vh;
-  width: 60vw;
-  margin: 0 1rem;
-  background: white;
   text-align: center;
   background: #f4d8cd;
   border: 1px solid #eaeaea;
@@ -10,17 +6,19 @@
   box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
 }
 
-input {
+.signup-field {
   background: #fbf2ee;
   font-size: 16px;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 4px;
+  margin: 8px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .signup-modal-card {
-    height: 90vh;
-    width: 80vw;
     margin: 0;
+  }
+  .signup-field {
+    padding: 16px;
+    margin: 4px;
   }
 }

@@ -1,22 +1,19 @@
 import "./SearchForm.css";
 import React, { useContext } from "react";
 import { Form } from "reactstrap";
-import {
-  FormControl,
-  FormLabel,
-  FormGroup,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  Button,
-  TextField,
-} from "@material-ui/core";
 import UserContext from "../../hooks/UserContext";
 import { useHistory } from "react-router";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import FormGroup from "@mui/material/FormGroup";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import TextField from "@mui/material/TextField";
+import Slider from "@mui/material/Slider";
 
 const SearchForm = () => {
   const history = useHistory();
-  const { searchData, setSearchData } = useContext(UserContext);
+  const { searchData, setSearchData, geo } = useContext(UserContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,96 +25,91 @@ const SearchForm = () => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    if (!searchData.location && !geo.error) {
+      searchData.coordinates = geo.coordinates;
+    }
     history.push("/decide");
   }
 
   return (
     <Form onSubmit={handleSubmit}>
       <FormControl>
-        <RadioGroup
-          row
-          aria-label="location"
-          name="type"
+        <ButtonGroup
           value={searchData.type}
-          onChange={handleChange}
-          required
+          className="button-group"
+          aria-label="outlined location button group"
+          size="small"
         >
-          <FormControlLabel
+          <Button
             value="bar"
-            control={<Radio color="primary" />}
-            label="Bar"
-            labelPlacement="top"
-          />
-          <FormControlLabel
+            name="type"
+            variant={searchData.type === "bar" ? "contained" : "outlined"}
+            onClick={handleChange}
+          >
+            Bar
+          </Button>
+          <Button
             value="restaurant"
-            control={<Radio color="primary" />}
-            label="Restaurant"
-            labelPlacement="top"
-          />
-          <FormControlLabel
+            name="type"
+            variant={
+              searchData.type === "restaurant" ? "contained" : "outlined"
+            }
+            onClick={handleChange}
+          >
+            Restaurant
+          </Button>
+          <Button
             value="coffee"
-            control={<Radio color="primary" />}
-            label="Coffee"
-            labelPlacement="top"
-          />
-          <FormControlLabel
+            name="type"
+            variant={searchData.type === "coffee" ? "contained" : "outlined"}
+            onClick={handleChange}
+          >
+            Coffee
+          </Button>
+          <Button
             value="dessert"
-            control={<Radio color="primary" />}
-            label="Dessert"
-            labelPlacement="top"
-          />
-        </RadioGroup>
+            name="type"
+            variant={searchData.type === "dessert" ? "contained" : "outlined"}
+            onClick={handleChange}
+          >
+            Dessert
+          </Button>
+        </ButtonGroup>
         <FormLabel className="label" component="legend">
-          Search Radius
+          Search Radius (mi)
         </FormLabel>
-        <RadioGroup
-          row
-          aria-label="distance"
+        <Slider
+          aria-label="Always visible"
           name="distance"
+          min={0.25}
+          max={5}
           value={searchData.distance}
+          valueLabelDisplay="on"
           onChange={handleChange}
-        >
-          <FormControlLabel
-            value="0.25"
-            control={<Radio />}
-            label="1/4 mile"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            value="0.5"
-            control={<Radio />}
-            label="1/2 mile"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            value="1"
-            control={<Radio />}
-            label="1 mile"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            value="5"
-            control={<Radio />}
-            label="5 miles"
-            labelPlacement="top"
-            required
-          />
-        </RadioGroup>
+        />
         <FormGroup>
           <FormLabel className="label" htmlFor="location">
             Location
           </FormLabel>
           <TextField
+            className="search-field"
             id="location"
             name="location"
             type="text"
-            variant="outlined"
+            variant="standard"
+            autoFocus={true}
+            placeholder="e.g. Seattle Center"
             value={searchData.location}
+            required={!!searchData.location && !!searchData.coordinates.lat}
             onChange={handleChange}
-            required
           />
         </FormGroup>
-        <Button id="btn" variant="contained" type="submit">
+        <Button
+          style={{ margin: "2rem" }}
+          variant="contained"
+          color="success"
+          onClick={handleSubmit}
+        >
           Give Me Some Options
         </Button>
       </FormControl>

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Alert, Form, Input, Label } from "reactstrap";
-import { FormControl, FormGroup, Button } from "@material-ui/core";
+import { Form, Input, Label } from "reactstrap";
+import Alert from "@mui/material/Alert";
+import FormControl from "@mui/material/FormControl";
+import FormGroup from "@mui/material/FormGroup";
+import Button from "@mui/material/Button";
 import "./LoginForm.css";
 
 const LoginForm = ({ submitLogin, handleClose }) => {
@@ -40,6 +43,7 @@ const LoginForm = ({ submitLogin, handleClose }) => {
             Username
           </Label>
           <Input
+            className="login-field"
             id="username"
             name="username"
             type="username"
@@ -52,6 +56,7 @@ const LoginForm = ({ submitLogin, handleClose }) => {
             Password
           </Label>
           <Input
+            className="login-field"
             id="password"
             name="password"
             type="password"
@@ -61,7 +66,7 @@ const LoginForm = ({ submitLogin, handleClose }) => {
             required
           />
         </FormGroup>
-        {formErrors.length ? <Alert color="danger">{formErrors}</Alert> : null}
+        {formErrors.length ? <Alert severity="warning">{formErrors}</Alert> : null}
         <Button
           style={{ margin: "2rem" }}
           variant="contained"

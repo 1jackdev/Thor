@@ -6,7 +6,13 @@ import Place from "../components/places/Place";
 import ProtectedRoute from "./ProtectedRoute";
 import Profile from "../components/profile/Profile";
 
-function Routes({ submitSignup, submitLogin, logout }) {
+function Routes({
+  submitSignup,
+  submitLogin,
+  logout,
+  searchErrors,
+  setSearchErrors,
+}) {
   return (
     <Switch>
       <Route exact path="/">
@@ -14,10 +20,11 @@ function Routes({ submitSignup, submitLogin, logout }) {
           submitSignup={submitSignup}
           submitLogin={submitLogin}
           logout={logout}
+          searchErrors={searchErrors}
         />
       </Route>
       <Route exact path="/decide">
-        <CardList title="Login" />
+        <CardList title="Login" setSearchErrors={setSearchErrors} />
       </Route>
       <Route exact path="/places/:id">
         <Place title="Place Details" />

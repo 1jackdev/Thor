@@ -4,13 +4,13 @@ import SearchForm from "../search/SearchForm";
 import UserContext from "../../hooks/UserContext";
 import SignupModal from "../auth/Signup/SignupModal";
 import LoginModal from "../auth/Login/LoginModal";
-import { Button } from "@material-ui/core";
+import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
 import "./Home.css";
 
-const Home = ({ submitSignup, submitLogin, logout }) => {
+const Home = ({ submitSignup, submitLogin, logout, searchErrors }) => {
   const { user } = useContext(UserContext);
-  const { searchData, setSearchData } = useContext(UserContext);
   const history = useHistory();
   function toProfile() {
     history.push("/profile");
@@ -28,10 +28,20 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
   function LoggedIn() {
     return (
       <div className="row">
-        <Button variant="contained" id="logout" onClick={logout}>
+        <Button
+          className="logged-in-btn"
+          variant="contained"
+          color="primary"
+          onClick={logout}
+        >
           Log out
         </Button>
-        <Button variant="contained" id="btn-acct" onClick={toProfile}>
+        <Button
+          className="logged-in-btn"
+          variant="contained"
+          color="secondary"
+          onClick={toProfile}
+        >
           Profile
         </Button>
       </div>
@@ -40,18 +50,25 @@ const Home = ({ submitSignup, submitLogin, logout }) => {
 
   return (
     <div className="container">
-      <main>
-        <div className="container top-btns">
-          {user ? LoggedIn() : LoggedOut()}
-          <h2 className="title">
-            <div style={{ color: "#379CA9" }}>TryThis!</div>
-          </h2>
-        </div>
+      <div className="top-btns">
+        {user ? LoggedIn() : LoggedOut()}
+        <h1 className="home-title" color="primary">
+          Try It Out
+        </h1>
+      </div>
 
-        <h3 style={{ padding: "2rem" }}>Can't Decide? Let us pick for you!</h3>
-        <SearchForm searchData={searchData} setSearchData={setSearchData} />
-        {""}
-      </main>
+      {searchErrors.length ? (
+        <Alert severity="warning">{searchErrors}</Alert>
+      ) : null}
+
+      <h3 style={{ color: "white" }}>
+        Can't decide where to go?
+        <br />
+        <br />
+        Let us pick for you!
+      </h3>
+      <SearchForm />
+      {""}
     </div>
   );
 };
