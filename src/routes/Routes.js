@@ -21,6 +21,7 @@ function Routes({
           submitLogin={submitLogin}
           logout={logout}
           searchErrors={searchErrors}
+          setSearchErrors={setSearchErrors}
         />
       </Route>
       <Route exact path="/decide">

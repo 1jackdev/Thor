@@ -9,7 +9,13 @@ import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
 import "./Home.css";
 
-const Home = ({ submitSignup, submitLogin, logout, searchErrors }) => {
+const Home = ({
+  submitSignup,
+  submitLogin,
+  logout,
+  searchErrors,
+  setSearchErrors,
+}) => {
   const { user } = useContext(UserContext);
   const history = useHistory();
   function toProfile() {
@@ -67,7 +73,7 @@ const Home = ({ submitSignup, submitLogin, logout, searchErrors }) => {
         <br />
         Let us pick for you!
       </h3>
-      <SearchForm />
+      <SearchForm setSearchErrors={setSearchErrors} />
       {""}
     </div>
   );

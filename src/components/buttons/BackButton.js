@@ -5,7 +5,6 @@ const BackButton = () => {
   const history = useHistory();
 
   function toOptions() {
-    console.log(history);
     history.push("/decide");
   }
   return (

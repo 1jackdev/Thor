@@ -11,7 +11,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import TextField from "@mui/material/TextField";
 import Slider from "@mui/material/Slider";
 
-const SearchForm = () => {
+const SearchForm = ({ setSearchErrors }) => {
   const history = useHistory();
   const { searchData, setSearchData, geo } = useContext(UserContext);
 
@@ -25,9 +25,19 @@ const SearchForm = () => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    if (!searchData.location && !geo.error) {
-      searchData.coordinates = geo.coordinates;
+    if (!searchData.type) {
+      const message = "Type is required";
+      setSearchErrors(message);
+      return;
     }
+    if (!searchData.location && geo.error) {
+      const message = "Location is required";
+      setSearchErrors(message);
+      return;
+    }
+    searchData.coordinates = !geo.error
+      ? geo.coordinates
+      : searchData.coordinates;
     history.push("/decide");
   }
 
@@ -100,7 +110,6 @@ const SearchForm = () => {
             autoFocus={true}
             placeholder="e.g. Seattle Center"
             value={searchData.location}
-            required={!!searchData.location && !!searchData.coordinates.lat}
             onChange={handleChange}
           />
         </FormGroup>
