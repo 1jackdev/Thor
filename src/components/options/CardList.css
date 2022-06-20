@@ -9,12 +9,12 @@
 }
 
 .one-result {
-  width: 100%;
+  width: 65%;
 }
 
 @media (min-width: 768px) {
   .one-result {
-    width: 65%;
+    width: 100%;
   }
 }
 
